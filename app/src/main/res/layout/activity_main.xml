@@ -6,13 +6,138 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/AddPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:shadowColor="#EF2C2C"
+                    android:text="+"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="20dp"
+                    app:backgroundTint="#40930C"
+                    app:strokeColor="#F31717" />
+
+                <Button
+                    android:id="@+id/DeletePhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginStart="145dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/AddPhone"
+                    android:text="-"
+                    android:textSize="20dp"
+                    app:backgroundTint="#FAFB5650" />
+
+
+                <Button
+                    android:id="@+id/Submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/phoneNo4"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="050dp"
+                    android:text="Submit" />
+
+
+                <EditText
+                    android:id="@+id/phoneNo3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/phoneNo2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:ems="10"
+                    android:hint="Mobile"
+                    android:inputType="phone" />
+
+
+                <EditText
+                    android:id="@+id/phoneNo4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/phoneNo3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:ems="10"
+                    android:hint="Mobile"
+                    android:inputType="phone" />
+
+
+                <EditText
+                    android:id="@+id/phoneNo0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/AddPhone"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:ems="10"
+                    android:hint="Mobile"
+                    android:inputType="phone" />
+
+                <EditText
+                    android:id="@+id/phoneNo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/phoneNo0"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:ems="10"
+                    android:hint="Mobile"
+                    android:inputType="phone" />
+
+                <EditText
+                    android:id="@+id/phoneNo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/phoneNo1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:ems="10"
+                    android:hint="Mobile"
+                    android:inputType="phone" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="401dp"
+                    android:layout_height="63dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="cursive"
+                    android:gravity="center"
+                    android:text="Add Mobile Number's for Receive Data"
+                    android:textColor="#32CDBB"
+                    android:textColorLink="#DD6B6B"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
