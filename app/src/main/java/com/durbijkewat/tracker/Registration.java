@@ -50,7 +50,7 @@ public class Registration extends AppCompatActivity {
 
 
 //Onclick listener on register button
-
+/*
         RegisterBtn.setOnClickListener(view -> {
 
             final String email=uEmail.getText().toString().trim();
@@ -75,6 +75,16 @@ public class Registration extends AppCompatActivity {
             }
 
 
+            if(phoneNo.length()!=10){
+
+                if(!(((phoneNo.length() == 11) && (phoneNo.charAt(0)=='0')) || ((phoneNo.length() == 13) && (phoneNo.charAt(0)=='+') && (phoneNo.charAt(1)=='9') && (phoneNo.charAt(2)=='1')))){
+                    uPhone.setError("Enter Valid Number");
+                    return;
+                }
+
+            }
+
+
 
             if(TextUtils.isEmpty(key)){
                 lKey.setError("Key is Required");
@@ -83,13 +93,12 @@ public class Registration extends AppCompatActivity {
 
 
             if(!TextUtils.isEmpty(email) && valEmail(email)==false){
-                uEmail.setError("Email is Required");
+                uEmail.setError("Enter Valid Email");
                 return;
             }
 
 
 //            }
-
 
 
             progressBar.setVisibility(View.VISIBLE);
@@ -100,7 +109,7 @@ public class Registration extends AppCompatActivity {
 
 
 
-
+*/
 
 
 
@@ -109,12 +118,12 @@ public class Registration extends AppCompatActivity {
 
 //        Opening MainActivity
 
-//        RegisterBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//            }
-//        });
+        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
 
     }
 }
