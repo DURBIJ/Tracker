@@ -2,23 +2,31 @@ package com.durbijkewat.tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
 
-
-    Button submit,plus,minus;
-    EditText [] Phone=new EditText [5];
+    public static SharedPreferences sharedPreferences;
+    static Button submit,plus,minus;
+    static EditText [] Phone=new EditText [5];
     ProgressBar progressBar;
-    int cnts=0;
+    static int cnts=0;
+    static ArrayList<String> mNumbers =new ArrayList<>();
+    static ArrayAdapter arrayAdapter;
+    memorisation memorisations;
 
 
 
@@ -58,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
         plus=findViewById(R.id.AddPhone);
         minus=findViewById(R.id.DeletePhone);
 
+        memorisations=new memorisation();
+
+        sharedPreferences=this.getSharedPreferences("MyDatas",MODE_PRIVATE);
+        mNumbers.clear();
+
+        //deserialize numbers from storage
+        try {
+            mNumbers=(ArrayList<String>)ObjectSerializer.deserialize(sharedPreferences.getString("mNumbers",ObjectSerializer.serialize(new ArrayList<String>())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        memorisations.fill(mNumbers);
 
 
 
@@ -87,12 +108,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        Onclick Listener on minus button
-        minus.setOnClickListener(view -> {
+        minus.setOnClickListener(view -> {Log.i("tag ","minus");
             if(cnts>0){
 
                 Phone[cnts].setVisibility(View.INVISIBLE);
                 Phone[cnts].getText().clear();      //clearing the text editer when doing invisible
                 cnts--;
+
+
+
+//            Updating mobile number Storage
+                memorisations.removeLast(mNumbers);
+
 
                 if(cnts==0){
                     minus.setVisibility(View.INVISIBLE);
@@ -162,9 +189,26 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
+//            Assined null to all number which are empty{
+            for(int i=0;i<5;i++){
+                if(TextUtils.isEmpty(phoneNo[i])){
+                    phoneNo[i]=null;
+                }
+            }
+
+//            Updating mobile number Storage
+            memorisations.updates(phoneNo);
+
 //            }
+
+            Log.i("Mb 2= ","kjk"+phoneNo[1]);
+            Log.i("Tag= ",phoneNo[0]);
+
+
 
 
         });
+
+
     }
 }
