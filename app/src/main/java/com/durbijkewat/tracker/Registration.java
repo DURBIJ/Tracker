@@ -27,8 +27,10 @@ public class Registration extends AppCompatActivity {
 
     public static boolean valEmail(String inputStr){
 
+//mail format in regex
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        Log.i("Tag: ", String.valueOf(inputStr.matches(regex)));
+
+
         return inputStr.matches(regex);
 
     }
@@ -62,36 +64,36 @@ public class Registration extends AppCompatActivity {
 
 // Validating inputs {
 
+//checking either user had entered name or not(empty)
             if(TextUtils.isEmpty(FullName)){
                 fullName.setError("Name is Required");
                 return;
             }
 
 
-
+//checking either user had entered phone number or not
             if(TextUtils.isEmpty(phoneNo)){
                 uPhone.setError("Mobile Number is Required");
                 return;
             }
 
 
-            if(phoneNo.length()!=10){
-
-                if(!(((phoneNo.length() == 11) && (phoneNo.charAt(0)=='0')) || ((phoneNo.length() == 13) && (phoneNo.charAt(0)=='+') && (phoneNo.charAt(1)=='9') && (phoneNo.charAt(2)=='1')))){
+//checking entered number  format is correct or not
+                if((MainActivity.valMobile(phoneNo)==false)){
                     uPhone.setError("Enter Valid Number");
                     return;
                 }
 
-            }
 
 
 
+//checking either licence key is entered or not
             if(TextUtils.isEmpty(key)){
                 lKey.setError("Key is Required");
                 return;
             }
 
-
+//checking either Email address is entered by user or not if entered then it format is correct or not
             if(!TextUtils.isEmpty(email) && valEmail(email)==false){
                 uEmail.setError("Enter Valid Email");
                 return;
