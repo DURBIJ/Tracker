@@ -13,23 +13,23 @@ public class memorisation {
 
 
 
-    // update funcation it will update the mobile number changes{
+    // update funcation it will update the mobile number changes{ start
     public static void updates(String[] mNumber) {
 
         ArrayList<String> numbers = new ArrayList<>();
 
 
-//          At most 5 numbers user can enter
+//At most 5 numbers user can enter
         for (int i = 0; i < 5; i++) {
 
-//            checking either number is entered by user or not(empty or Null)
-//            in MainActivity putting Null in string if string is empty
+//checking either number is entered by user or not(empty or Null)
+//in MainActivity putting Null in string if string is empty
             if (mNumber[i] != null) {
                 numbers.add(mNumber[i]);
             }
         }
 
-//        saving the data in sharedPreferences  which are changes by user (Mobile number) in mainActivity
+//saving the data in sharedPreferences  which are changes by user (Mobile number) in mainActivity
         try {
             MainActivity.sharedPreferences.edit().putString("mNumbers", ObjectSerializer.serialize(numbers)).apply();
         } catch (IOException e) {
@@ -38,7 +38,7 @@ public class memorisation {
 
     }
 
-// }
+// } end
 
 
 
@@ -53,21 +53,21 @@ public class memorisation {
 
         for(int i=0;i<mNumber.size();i++) {
 
-//            checking either number is their or empty
+//checking either number is their or empty
             if (mNumber.get(i) != null) {
                 MainActivity.Phone[i].setText(mNumber.get(i));
 
-//                updating counts for handling plus minus button in MainActivity
+//updating counts for handling plus minus button in MainActivity
                 MainActivity.cnts = i;
 
 
-//            if more then one numbers was saved then un hiding the text editor and Removing button (minus)
+//if more then one numbers was saved then un hiding the text editor and Removing button (minus)
             if (i > 0) {
                 MainActivity.Phone[i].setVisibility(View.VISIBLE);
                 MainActivity.minus.setVisibility(View.VISIBLE);
             }
 
-//            if maximum limit of number reached then hiding add more Text editor button
+//if maximum limit of number reached then hiding add more Text editor button
             if (i == 4) {
                 MainActivity.plus.setVisibility(View.INVISIBLE);
             }
@@ -84,12 +84,13 @@ public class memorisation {
 
     public static void removeLast(ArrayList<String> numbers){
 
-//        At least one mobile number is compulsory
+
+//At least one mobile number is compulsory
         if(numbers.size()>1){
-//            removing last number from saved mobile number
+//removing last number from saved mobile number
             numbers.remove(numbers.size()-1);
 
-//            updating sharedPreferences while removing saved mobile number
+//updating sharedPreferences while removing saved mobile number
             try {
                 MainActivity.sharedPreferences.edit().putString("mNumbers", ObjectSerializer.serialize(numbers)).apply();
             } catch (IOException e) {
